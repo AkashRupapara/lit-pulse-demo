@@ -3,11 +3,88 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lit Pulse Circle</title>
+  <title>Static Circle with Pulse Effect</title>
+  <style>
+    /* Container for circles */
+    .circle-container {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      height: 100vh;
+    }
+
+    /* Circle container to hold the static circle and pulse */
+    .circle-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    /* Static circle (middle circle) */
+    .static-circle {
+      background-color: #3498db;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60px; /* Static size */
+      height: 60px;
+      z-index: 2;
+    }
+
+    /* Pulse circle (surrounding light) */
+    .pulse-circle {
+      background-color: rgba(52, 152, 219, 0.3);
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100px; /* Size of the pulse effect */
+      height: 100px;
+      animation: pulseGlow 1.5s infinite;
+      z-index: 1;
+    }
+
+    /* Pulse effect animation */
+    @keyframes pulseGlow {
+      0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.7;
+      }
+      50% {
+        transform: translate(-50%, -50%) scale(1.5);
+        opacity: 0.4;
+      }
+      100% {
+        transform: translate(-50%, -50%) scale(2);
+        opacity: 0;
+      }
+    }
+  </style>
 </head>
 <body>
-  <pulse-circle></pulse-circle>
+  <div class="circle-container">
+    <!-- Circle wrapper with static circle and pulse effect -->
+    <div class="circle-wrapper">
+      <div class="static-circle"></div>
+      <div class="pulse-circle"></div>
+    </div>
 
-  <script type="module" src="/src/PulseCircle.js"></script>
+    <div class="circle-wrapper">
+      <div class="static-circle" style="width: 80px; height: 80px;"></div>
+      <div class="pulse-circle" style="width: 120px; height: 120px;"></div>
+    </div>
+
+    <div class="circle-wrapper">
+      <div class="static-circle" style="width: 100px; height: 100px;"></div>
+      <div class="pulse-circle" style="width: 150px; height: 150px;"></div>
+    </div>
+
+    <div class="circle-wrapper">
+      <div class="static-circle" style="width: 120px; height: 120px;"></div>
+      <div class="pulse-circle" style="width: 180px; height: 180px;"></div>
+    </div>
+  </div>
 </body>
 </html>
